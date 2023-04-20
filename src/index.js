@@ -7,6 +7,7 @@ const siteContent = { // BU NESNEYİ DEĞİŞTİRMEYİN
     "nav-item-5": "Hakkımızda",
     "nav-item-6": "İletişim",
   },
+
   "cta": {
     "h1": "Bu DOM Mükemmel",
     "button": "Başlayın",
@@ -43,3 +44,44 @@ console.log('Proje açıldı!')
 
 
 /* Kodlar Buradan aşağıya */
+const menuItems= document.querySelectorAll('nav a');
+menuItems.forEach((item,index) => {
+  item.textContent = siteContent.nav [`nav-item-${index + 1}`]
+  item.setAttribute ("class","italic")
+})
+document.querySelector("h1").textContent = "Bu DOM Mükemmel";
+document.querySelector("button").textContent = "Başlayın";
+
+const resim = document.querySelector("#logo-img");
+resim.src = siteContent.images["logo-img"];
+
+const ctaresim = document.querySelector("#cta-img");
+ctaresim.src = siteContent.images["cta-img"];
+
+const midresim = document.querySelector("#middle-img");
+midresim.src = siteContent.images["accent-img"];
+
+const mainTextContent = document.querySelectorAll(".text-content");
+let index = 0;
+for (let i = 0; i < mainTextContent.length; i++ ) {
+  mainTextContent[i].children[0].textContent = Object.values(
+    siteContent["ana-içerik"]
+  ) [index];
+  index += 1;
+  mainTextContent[i].children[1].textContent = Object.values (
+    siteContent["ana-içerik"]
+  ) [index];
+  index += 1;
+}
+
+document.querySelector(".contact h4").textContent = siteContent["iletisim"]["iletişim-h4"];
+
+const pContact = document.querySelectorAll(".contact p");
+pContact[0].textContent = siteContent["iletisim"]["adres"];
+pContact[1].textContent = siteContent["iletisim"]["telefon"];
+pContact[2].textContent = siteContent["iletisim"]["email"];
+
+
+const footer = document.querySelector("footer a");
+  footer.textContent = siteContent.footer.copyright;
+  footer.setAttribute("class", "bold");
